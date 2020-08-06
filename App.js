@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Button, FlatList } from "react-native";
+import { StyleSheet, View, Button, FlatList, ImageBackground } from "react-native";
 
 import DumpItem from "./components/DumpItem";
 import DumpInput from "./components/DumpInput";
+
+const image = { uri: "https://drive.google.com/thumbnail?id=1UduWdedVTJR7pbw7G7G7pGozm98aLqbO"};
 
 export default function App() {
   const [brainDumps, setBrainDumps] = useState([]);
@@ -30,15 +32,17 @@ export default function App() {
     <View
       style={{
         flex: 1,
-        backgroundColor: "pink",
+        backgroundColor: "#ffeadb",
         paddingTop: 300,
         paddingLeft: 50,
         paddingRight: 50,
+        
       }}
     >
+    <ImageBackground source={image} style={styles.image}>
       <Button
-        title="Add New Dump"
-        color="#ea907a"
+        title="ADD NEW DUMP"
+        color="#679b9b"
         onPress={() => setIsAddMode(true)}
       />
       <DumpInput
@@ -57,6 +61,7 @@ export default function App() {
           />
         )}
       />
+      </ImageBackground>
     </View>
   );
 }
@@ -65,5 +70,15 @@ const styles = StyleSheet.create({
   screen: {
     padding: 50,
     marginTop: 300,
+  },
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center",
+    
+  
+    
+    
+    
   },
 });
